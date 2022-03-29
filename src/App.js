@@ -1,10 +1,15 @@
-import React, { useEffect,  useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import Footer from "./component/footer";
 import Navbar from "./component/navbar";
 import BlogScreen from "./screen/blogScreen";
 import HomeScreen from "./screen/homeScreen";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import UserContext from "./provider/userProvider";
 import ProductScreenArt from "./screen/productScreen/artAndCraft";
 import ProductScreenChange from "./screen/productScreen/changeAndAccessories";
@@ -19,28 +24,37 @@ import CustomerLoginAccount from "./screen/loginScreen/customerAccount";
 import SellerLoginAccount from "./screen/loginScreen/sellerAccount";
 import ForgotPasswordScreen from "./screen/forgotPassword";
 import ResetPasswordScreen from "./screen/resetPassword";
-import ProfileScreen from "./screen/profileScreen";
-import ProfileOverView from "./screen/profileScreen/overview";
-import EditProfile from "./screen/profileScreen/editProfile";
-import StockReports from "./screen/profileScreen/stockReports";
-import ProfileProduct from "./screen/profileScreen/profileProduct";
+import SellerProfileScreen from "./screen/sellerProfileScreen";
+import CustomerProfileScreen from "./screen/customerProfileScreen";
+import ProfileOverView from "./screen/sellerProfileScreen/overview";
+import EditProfile from "./screen/sellerProfileScreen/editProfile";
+import StockReports from "./screen/sellerProfileScreen/stockReports";
+import ProfileProduct from "./screen/sellerProfileScreen/profileProduct";
 import AccountVerifcationScreen from "./screen/accountVerifation";
-import SlideShow from './component/newSlider'
+import MobileNav from "./component/mobileNav";
+import EditCustomerProfile from "./screen/customerProfileScreen/editCustomerProfile";
+import Messages from "./screen/customerProfileScreen/messages";
+import CustomerOrders from "./screen/customerProfileScreen/orders";
+import OrdersAll from "./component/orderNavs/ordersAll";
+import OrdersPending from "./component/orderNavs/ordersPending";
+import OrdersCompleted from "./component/orderNavs/ordersCompleted";
+import OrdersCancelled from "./component/orderNavs/ordersCancelled";
+import SavedItems from "./screen/customerProfileScreen/savedItems";
 function App() {
-  const {state, USER} = useContext(UserContext)
+  const { state, USER } = useContext(UserContext);
 
-  const recoverDataFunc = async()  =>{
+  const recoverDataFunc = async () => {
     await USER.recoverData();
-  }
+  };
   useEffect(() => {
-    
-    recoverDataFunc()
-  }, [state]);
+    recoverDataFunc();
+  }, [state, USER]);
 
   return (
     <div className="App">
       <Router>
         <Navbar />
+        <MobileNav />
         <Routes>
           <Route path="/" element={<HomeScreen />} />
           <Route
@@ -76,22 +90,47 @@ function App() {
             />
           </Route>
           {/* =========loginScreen====== */}
-          <Route path="/loginScreen" element={ <LoginScreen />}>
+          <Route path="/loginScreen" element={<LoginScreen />}>
             <Route
               path="customerLoginAccount"
               element={<CustomerLoginAccount />}
             />
             <Route path="sellerLoginAccount" element={<SellerLoginAccount />} />
           </Route>
-          {/* =====profileScreen==== */}
+          {/* =====sellerProfileScreen==== */}
           <Route
-            path="/profileScreen"
-            element={state.token ? <ProfileScreen /> : <Navigate to="/" />}
+            path="/sellerProfileScreen"
+            element={
+              state.token ? <SellerProfileScreen /> : <Navigate to="/" />
+            }
           >
             <Route path="overview" element={<ProfileOverView />} />
             <Route path="stockReports" element={<StockReports />} />
             <Route path="profileProduct" element={<ProfileProduct />} />
             <Route path="editProfile" element={<EditProfile />} />
+          </Route>
+          {/* =====CustomerProfileScreen==== */}
+          <Route
+            path="/customerProfileScreen"
+            element={
+              state.token ? <CustomerProfileScreen /> : <Navigate to="/" />
+            }
+          >
+            <Route path="messages" element={<Messages />} />
+            {/* =====customer order =========== */}
+            <Route path="customerOrders" element={<CustomerOrders />}>
+              <Route path="orderAll" element={<OrdersAll />} />
+              <Route path="orderPending" element={<OrdersPending />} />
+              <Route path="orderCompleted" element={<OrdersCompleted />} />
+              <Route path="orderCancelled" element={<OrdersCancelled />} />
+            </Route>
+            {/* ========= XX===============*/}
+            <Route path="profileProduct" element={<ProfileProduct />} />
+            <Route
+              path="editCustomerProfile"
+              element={<EditCustomerProfile />}
+            />
+            <Route path="savedItems" element={<SavedItems />} />
           </Route>
         </Routes>
         <Footer />

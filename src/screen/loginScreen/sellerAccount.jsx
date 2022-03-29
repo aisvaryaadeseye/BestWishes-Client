@@ -100,7 +100,7 @@ const SellerLoginAccount = () => {
               onChange={(e) => setPassword(e.target.value)}
               className="passwordInput"
             />
-            <i class="fa fa-eye" aria-hidden="true"></i>
+            <i className="fa fa-eye" aria-hidden="true"></i>
           </div>
         </div>
         <div className="forgotPassContainer">

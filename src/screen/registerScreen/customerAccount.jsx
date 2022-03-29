@@ -33,6 +33,14 @@ const CustomerRegisterAccount = () => {
       setPhone("");
       return setError("Password must be minimun of 6 characters");
     }
+    var regx = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+    if(!regx.test(password)){
+      setTimeout(() => {
+        setError("");
+      }, 5000);
+      return setError("Password must contain at least a uppercase, a number and a special character");
+      
+    }
 
     try {
       const { data } = await axios.post("/api/auth/register", {
@@ -131,7 +139,7 @@ const CustomerRegisterAccount = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 className="passwordInput regInputField"
               />
-              <i class="fa fa-eye" aria-hidden="true"></i>
+              <i className="fa fa-eye" aria-hidden="true"></i>
             </div>
           </div>
         </div>
@@ -150,7 +158,7 @@ const CustomerRegisterAccount = () => {
         </div>
         <div className="sigupWithGoogleContainer">
           <p>
-            <i class="fab fa-google fa-3x"></i>
+            <i className="fab fa-google fa-3x"></i>
             Sign up with google
           </p>
         </div>

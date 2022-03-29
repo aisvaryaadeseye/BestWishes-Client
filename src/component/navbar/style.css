@@ -1,3 +1,14 @@
+.navBar{
+  display: flex;
+flex-direction :column;
+justify-content:space-between;
+align-items: center;
+background-color: var(--whiteColor);
+height: 110px;
+position: sticky;
+top: 0;
+z-index: 999;
+}
 .navbarTop {
   display: flex;
   height: 70px;
@@ -154,4 +165,9 @@ a {
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
+}
+@media screen and (max-width: 800px) {
+  .navBar{
+    display: none!important;
+  }
 }

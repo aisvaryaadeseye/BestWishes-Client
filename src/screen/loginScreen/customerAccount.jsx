@@ -2,10 +2,13 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import UserContext from "../../provider/userProvider";
 import axios from "axios";
+var passwordValidator = require("password-validator");
 
 const CustomerLoginAccount = () => {
   let navigate = useNavigate();
-  const {USER, state} = useContext(UserContext)
+  var schema = new passwordValidator();
+
+  const { USER, state } = useContext(UserContext);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState();
@@ -16,6 +19,8 @@ const CustomerLoginAccount = () => {
       navigate("/");
     }
   }, [state]);
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,6 +37,7 @@ const CustomerLoginAccount = () => {
       }, 5000);
       return setError("Password must be minimun of 5 characters");
     }
+  
 
     try {
       const { data } = await axios.post(
@@ -45,7 +51,7 @@ const CustomerLoginAccount = () => {
       //   console.log({ data: data });
       // console.log({ fullName: data.user.fullName })
 
-      await USER.updateUserData(data)
+      await USER.updateUserData(data);
       setSuccess("Success!");
       setTimeout(() => {
         setSuccess("");
@@ -100,7 +106,7 @@ const CustomerLoginAccount = () => {
               onChange={(e) => setPassword(e.target.value)}
               className="passwordInput"
             />
-            <i class="fa fa-eye" aria-hidden="true"></i>
+            <i className="fa fa-eye" aria-hidden="true"></i>
           </div>
         </div>
         <div className="forgotPassContainer">

@@ -1,32 +1,34 @@
-import React, {useState, useEffect } from 'react'
-import './style.css'
-import { Container } from '../../component/styles/Container.styled'
-import CustomerReview from '../../component/customerReview';
-import { CustomerHead, CustomerReviewContainer, CustomerUnderline, FooterContainer, SubscribeToNewLetter, SubscribeToNewLetterLeft, SubscribeToNewLetterRight, WhoAreWeContainer } from './style';
-import WhoAreWe from '../../component/whoAreWe';
-import OurBlog from '../../component/ourBlog';
-import { whorereWeData } from '../../component/data/WhoAreWe';
-import ProductSlider from '../../component/productSilde';
-import HomeSlider from '../../component/homeSlider';
-import SlideShow from '../../component/newSlider';
-
+import React, { useState, useEffect } from "react";
+import "./style.css";
+import { Container } from "../../component/styles/Container.styled";
+import CustomerReview from "../../component/customerReview";
+import {
+  CustomerHead,
+  CustomerReviewContainer,
+  CustomerUnderline,
+  FooterContainer,
+  SubscribeToNewLetter,
+  SubscribeToNewLetterLeft,
+  SubscribeToNewLetterRight,
+  WhoAreWeContainer,
+} from "./style";
+import WhoAreWe from "../../component/whoAreWe";
+import OurBlog from "../../component/ourBlog";
+import { whorereWeData } from "../../component/data/WhoAreWe";
+import ProductSlider from "../../component/productSilde";
+import HomeSlider from "../../component/homeSlider";
+// import { useNavigate } from "react-router-dom";
 
 function HomeScreen() {
-
- 
-
-
   return (
     <Container>
-      
       {/* ===========topContainer================= */}
       <div className="homePageTop">
         <HomeSlider />
-        
       </div>
 
       {/* ================top container ===xx=============== */}
-      {/*  today deals ==== start========== */}
+      {/*  ============today deals ==== start========== */}
       <div className="homeTodayDetail">
         <div className="homeTodayDetailTop">
           <div className="todayDetailTextContainer">
@@ -34,12 +36,13 @@ function HomeScreen() {
             <div className="underline"></div>
           </div>
           <div className="seeAllContainer">
-            <p>SEE ALL</p> <i className="fa fa-chevron-right" aria-hidden="true"></i>
+            <p>SEE ALL</p>{" "}
+            <i className="fa fa-chevron-right" aria-hidden="true"></i>
           </div>
         </div>
         <div className="homeTodayDetailBottom">
           <ProductSlider />
-        
+
           {/* <ProductDetail showDiscount={showDiscount}/>
           <ProductDetail showDiscount={showDiscount}/>
           <ProductDetail showDiscount={showDiscount}/>
@@ -47,7 +50,6 @@ function HomeScreen() {
           <ProductDetail showDiscount={showDiscount}/>
           <ProductDetail showDiscount={showDiscount}/>
           <ProductDetail showDiscount={showDiscount}/> */}
-         
         </div>
       </div>
 
@@ -56,7 +58,6 @@ function HomeScreen() {
       <CustomerReviewContainer>
         <CustomerHead>Review from our Seller & Customer</CustomerHead>
         <CustomerUnderline />
-
 
         <div className="customerReviewList">
           <CustomerReview />
@@ -80,11 +81,12 @@ function HomeScreen() {
             <div className="underline"></div>
           </div>
           <div className="seeAllContainer">
-            <p>SEE ALL</p> <i className="fa fa-chevron-right" aria-hidden="true"></i>
+            <p>SEE ALL</p>{" "}
+            <i className="fa fa-chevron-right" aria-hidden="true"></i>
           </div>
         </div>
         <div className="homeTodayDetailBottom">
-        <ProductSlider />
+          <ProductSlider />
           {/* <ProductDetail />
           <ProductDetail />
           <ProductDetail />
@@ -92,7 +94,6 @@ function HomeScreen() {
           <ProductDetail />
           <ProductDetail />
           <ProductDetail /> */}
-
         </div>
       </div>
       {/* ============popular product============xx=== */}
@@ -102,28 +103,17 @@ function HomeScreen() {
       <WhoAreWeContainer>
         <div className="whoAreWeTop">
           <p>Who are we ?</p>
-          <div className="whoAreWeUnderline">
-
-
-          </div>
+          <div className="whoAreWeUnderline"></div>
         </div>
 
         <div className="whoAreWeBottom">
-
-          {
-            whorereWeData.map((who) => {
-              return (
-                <WhoAreWe key={who.id} who={who} />
-              )
-            })
-          }
-         
+          {whorereWeData.map((who) => {
+            return <WhoAreWe key={who.id} who={who} />;
+          })}
         </div>
       </WhoAreWeContainer>
 
-
       {/* =============Who are we========XXX=========== */}
-
 
       {/* ============feature product=============== */}
       <div className="homeTodayDetail">
@@ -133,17 +123,17 @@ function HomeScreen() {
             <div className="underline"></div>
           </div>
           <div className="seeAllContainer">
-            <p>SEE ALL</p> <i className="fa fa-chevron-right" aria-hidden="true"></i>
+            <p>SEE ALL</p>{" "}
+            <i className="fa fa-chevron-right" aria-hidden="true"></i>
           </div>
         </div>
         <div className="homeTodayDetailBottom">
-        <ProductSlider />
+          <ProductSlider />
           {/* <ProductDetail />
           <ProductDetail />
           <ProductDetail />
           <ProductDetail />
           <ProductDetail /> */}
-
         </div>
       </div>
       {/* ============feature product============xx=== */}
@@ -153,7 +143,6 @@ function HomeScreen() {
 
       {/* ============our Blog============XXX==== */}
 
-
       {/* ============New Products================ */}
       <div className="homeTodayDetail">
         <div className="homeTodayDetailTop">
@@ -162,7 +151,8 @@ function HomeScreen() {
             <div className="underline"></div>
           </div>
           <div className="seeAllContainer">
-            <p>SEE ALL</p> <i className="fa fa-chevron-right" aria-hidden="true"></i>
+            <p>SEE ALL</p>{" "}
+            <i className="fa fa-chevron-right" aria-hidden="true"></i>
           </div>
         </div>
         <div className="homeTodayDetailBottom">
@@ -171,23 +161,21 @@ function HomeScreen() {
           <ProductDetail />
           <ProductDetail />
           <ProductDetail /> */}
-            <ProductSlider />
-
+          <ProductSlider />
         </div>
       </div>
 
       {/* ============New product============XXX==== */}
 
-
       {/* ============Subscriber newsletter=============== */}
 
-      <SubscribeToNewLetter className='subsscribeToNewLetter'>
+      <SubscribeToNewLetter className="subsscribeToNewLetter">
         <SubscribeToNewLetterLeft>
           <div className="newLetterContainer">
             <h2>Subscribe to our newletter</h2>
             <p>Be the first to know about offers and update</p>
             <div className="newLetterEmailContainer">
-              <input type="text" placeholder='Email address' />
+              <input type="text" placeholder="Email address" />
               <div className="emailSubmitBtn">
                 <button>Submit</button>
               </div>
@@ -213,14 +201,13 @@ function HomeScreen() {
             <div className="becomeSellerBtn">
               <button>Become a Seller Today</button>
             </div>
-
           </div>
         </SubscribeToNewLetterRight>
       </SubscribeToNewLetter>
 
       {/* ============Subscriber newsletter==========XXX==== */}
-    </Container >
-  )
+    </Container>
+  );
 }
 
-export default HomeScreen
+export default HomeScreen;

@@ -29,7 +29,7 @@ const RegisterScreen = () => {
           <div className="registerTextContainer">
             <h1>
               {" "}
-              <i class="fa fa-circle " aria-hidden="true"></i>Authenticity
+              <i className="fa fa-circle " aria-hidden="true"></i>Authenticity
             </h1>
             <p>All our products are 100% raw materials no</p>
             <p>added components</p>
@@ -38,8 +38,8 @@ const RegisterScreen = () => {
           <div className="registerTextContainer">
             <h1>
               {" "}
-              <i class="fa fa-circle " aria-hidden="true"></i>Supporting small
-              business
+              <i className="fa fa-circle " aria-hidden="true"></i>Supporting
+              small business
             </h1>
             <p>Best wishes priority is to give Artisan</p>
             <p>their due royalty and also make sure</p>
@@ -49,7 +49,7 @@ const RegisterScreen = () => {
           <div className="registerTextContainer">
             <h1>
               {" "}
-              <i class="fa fa-circle " aria-hidden="true"></i>Eco friendly
+              <i className="fa fa-circle " aria-hidden="true"></i>Eco friendly
             </h1>
             <p>Our priority is to give Artisan their due</p>
             <p>royalty and also make sure our</p>

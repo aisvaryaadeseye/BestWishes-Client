@@ -36,6 +36,15 @@ a{
     text-decoration: none;
     color: var(--blackColor);
 }
-.logOutIcon{
+.navIcons{
     margin-right: 0.5em;
+}
+.sellIcon, .profileIcon, .messageIcon, .logoutIcon {
+    width:2em;
+}
+.orderIcon{
+    width:1.5em;
+}
+.navLinks:hover{
+    color: var(--orangeColor) !important;
 }

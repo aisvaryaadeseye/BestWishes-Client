@@ -1,4 +1,4 @@
-import React ,{useContext}from "react";
+import React, { useContext } from "react";
 import "./style.css";
 import customerImg from "../../assets/images/customerImg.jpg";
 import { Link, Outlet } from "react-router-dom";
@@ -17,10 +17,8 @@ import card from "../../assets/icons/card.svg";
 import income from "../../assets/icons/income.svg";
 import UserContext from "../../provider/userProvider";
 
-
-
-const ProfileScreen = () => {
-  const {state, USER} = useContext(UserContext)
+const SellerProfileScreen = () => {
+  const { state, USER } = useContext(UserContext);
 
   const logOut = () => {
     localStorage.removeItem("authToken");
@@ -37,7 +35,7 @@ const ProfileScreen = () => {
           <h1>Chesterfiled Store</h1>
           <h2>Helsinki, Finland</h2>
           <h3>
-            4.5 ratings <i class="fa fa-star" aria-hidden="true"></i>
+            4.5 ratings <i className="fa fa-star" aria-hidden="true"></i>
           </h3>
         </div>
         {/* ============ */}
@@ -128,4 +126,4 @@ const ProfileScreen = () => {
   );
 };
 
-export default ProfileScreen;
+export default SellerProfileScreen;

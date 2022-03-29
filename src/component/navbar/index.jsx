@@ -6,7 +6,7 @@ import bestWishLogo from "../../assets/images/bestWishesLogo.svg";
 import UserContext from "../../provider/userProvider";
 import customerImg from "../../assets/images/customerImg.jpg";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import TopRightNav from "../topRightNav";
 
 import profileIIMG from "../../assets/images/profileIIMG.png";
@@ -15,7 +15,7 @@ const Navbar = () => {
   const {state} = useContext(UserContext)
 
   return (
-    <NavbarStyled>
+    <NavbarStyled className="navBar">
       <div className="navbarTop">
         <Link to="/">
           <img src={bestWishLogo} className="bestWishLogo" />
@@ -35,7 +35,7 @@ const Navbar = () => {
           <div className="accountContainer">
             <TopRightNav user={state.token} />
             {state.token ? (
-              <Link to="/profileScreen/overview">
+              <Link to="/customerProfileScreen/editCustomerProfile">
                 <div className="userImgContainer">
                   <img src={customerImg} className="userImg" alt="" />
                 </div>
