@@ -6,7 +6,6 @@ const CustomerRegisterAccount = () => {
   let navigate = useNavigate();
 
   const [fullName, setFullName] = useState();
-
   const [email, setEmail] = useState();
   const [phone, setPhone] = useState();
   const [password, setPassword] = useState();
@@ -34,12 +33,13 @@ const CustomerRegisterAccount = () => {
       return setError("Password must be minimun of 6 characters");
     }
     var regx = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
-    if(!regx.test(password)){
+    if (!regx.test(password)) {
       setTimeout(() => {
         setError("");
       }, 5000);
-      return setError("Password must contain at least a uppercase, a number and a special character");
-      
+      return setError(
+        "Password must contain at least a uppercase, a number and a special character"
+      );
     }
 
     try {

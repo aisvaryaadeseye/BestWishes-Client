@@ -23,6 +23,7 @@ const SellerProfileScreen = () => {
   const logOut = () => {
     localStorage.removeItem("authToken");
     localStorage.removeItem("user");
+    localStorage.removeItem("userID");
     window.location.reload();
   };
   return (

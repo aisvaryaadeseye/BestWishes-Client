@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const SellerRegisterAccount = () => {
+const BecomeAseller = () => {
   const [sellerName, setSellerName] = useState("");
 
   const [sellerCheckBoxList, setSellerCheckboxList] = useState({
@@ -234,4 +234,4 @@ const SellerRegisterAccount = () => {
   );
 };
 
-export default SellerRegisterAccount;
+export default BecomeAseller;

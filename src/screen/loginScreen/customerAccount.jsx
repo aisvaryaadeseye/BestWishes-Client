@@ -2,25 +2,24 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import UserContext from "../../provider/userProvider";
 import axios from "axios";
-var passwordValidator = require("password-validator");
 
 const CustomerLoginAccount = () => {
   let navigate = useNavigate();
-  var schema = new passwordValidator();
 
   const { USER, state } = useContext(UserContext);
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [error, setError] = useState();
-  const [success, setSuccess] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
-  useEffect(() => {
-    if (state.token) {
-      navigate("/");
-    }
-  }, [state]);
-
-
+  // useEffect(() => {
+  //   if (state.token) {
+  //     navigate("/");
+  //   }
+  //   // return () => {
+  //   //   console.log("cleaned up");
+  //   // };
+  // }, [state]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,7 +36,6 @@ const CustomerLoginAccount = () => {
       }, 5000);
       return setError("Password must be minimun of 5 characters");
     }
-  
 
     try {
       const { data } = await axios.post(
@@ -48,10 +46,11 @@ const CustomerLoginAccount = () => {
         },
         config
       );
-      //   console.log({ data: data });
-      // console.log({ fullName: data.user.fullName })
 
       await USER.updateUserData(data);
+
+      localStorage.setItem("userID", JSON.stringify(data.user._id));
+      localStorage.setItem("authToken", data.token);
       setSuccess("Success!");
       setTimeout(() => {
         setSuccess("");

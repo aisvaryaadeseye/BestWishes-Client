@@ -2,7 +2,6 @@
   display: none;
   width: 100%;
   justify-content: space-between;
-  /* align-items: center; */
   flex-direction: column;
 }
 .mobileNavTop {
@@ -12,9 +11,11 @@
 }
 .hamburgerContainer {
   display: flex;
+  cursor: pointer;
 }
 .mobileNavBottomLeft {
   display: none;
+  margin-left: 0.4em;
 }
 .mobileNavBottomRight {
   display: none;
@@ -28,28 +29,35 @@
   border-bottom: 2px solid var(--lightGreyColor);
   border-radius: 0.3em;
 }
-.mobileNavRightList {
+.mobileAcct {
   display: flex;
-  flex-direction: column;
-  /* width: 100px; */
-  padding: 0 0.3em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid var(--lightGreyColor);
-  border-radius: 0.3em;
+  width: 20em !important;
+  text-align: start;
+  justify-content: start;
+}
+.accountItems {
+  display: none;
+  margin-left: 1em;
+}
+.fafaRight {
+  font-size: 0.7em !important;
+  margin-left: 0.3em;
+}
+.accountLinkNav {
+  margin-right: 1em;
 }
 
 .leftBar {
   margin-right: 1em;
 }
-.mobileNavLeftList > ul {
-  display: flex;
-  flex-direction: column;
-}
+
 .mobileNavLink {
   display: flex;
   color: black;
   margin-top: 0.3em;
   cursor: pointer;
+  width: 12em;
+  /* background-color: red; */
   /* margin-left: 0.2em; */
 }
 .mobileNavLink:hover {

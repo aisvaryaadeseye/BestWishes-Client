@@ -40,12 +40,26 @@ import OrdersPending from "./component/orderNavs/ordersPending";
 import OrdersCompleted from "./component/orderNavs/ordersCompleted";
 import OrdersCancelled from "./component/orderNavs/ordersCancelled";
 import SavedItems from "./screen/customerProfileScreen/savedItems";
+import CustomerPayment from "./screen/customerProfileScreen/payment";
+import PayWithCard from "./component/customerPayment/payWithCard";
+import PayWithPayPal from "./component/customerPayment/payWithPayPal";
+import BecomeSeller from "./screen/customerProfileScreen/becomeSeller";
+import BecomeAseller from "./screen/customerProfileScreen/becomeAselller";
 function App() {
   const { state, USER } = useContext(UserContext);
+
+  const [token, setToken] = useState("");
+
+  useEffect(() => {
+    if (localStorage.getItem("authToken")) {
+      setToken(localStorage.getItem("authToken"));
+    }
+  });
 
   const recoverDataFunc = async () => {
     await USER.recoverData();
   };
+
   useEffect(() => {
     recoverDataFunc();
   }, [state, USER]);
@@ -125,12 +139,21 @@ function App() {
               <Route path="orderCancelled" element={<OrdersCancelled />} />
             </Route>
             {/* ========= XX===============*/}
+
+            {/* =====customer payment =========== */}
+            <Route path="customerPayment" element={<CustomerPayment />}>
+              <Route path="payWithCard" element={<PayWithCard />} />
+              <Route path="payWithPayPal" element={<PayWithPayPal />} />
+            </Route>
+            {/* ========= XX===============*/}
             <Route path="profileProduct" element={<ProfileProduct />} />
             <Route
               path="editCustomerProfile"
               element={<EditCustomerProfile />}
             />
             <Route path="savedItems" element={<SavedItems />} />
+            <Route path="becomeSeller" element={<BecomeSeller />} />
+            <Route path="becomeAseller" element={<BecomeAseller />} />
           </Route>
         </Routes>
         <Footer />

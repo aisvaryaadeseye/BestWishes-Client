@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { NavbarStyled } from "./style";
 import "./style.css";
 import "font-awesome/css/font-awesome.min.css";
@@ -12,7 +12,14 @@ import TopRightNav from "../topRightNav";
 import profileIIMG from "../../assets/images/profileIIMG.png";
 
 const Navbar = () => {
-  const {state} = useContext(UserContext)
+  const { state } = useContext(UserContext);
+  const [token, setToken] = useState("");
+
+  useEffect(() => {
+    if (localStorage.getItem("authToken")) {
+      setToken(localStorage.getItem("authToken"));
+    }
+  });
 
   return (
     <NavbarStyled className="navBar">
@@ -49,7 +56,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className="navbarBottom">
-        <ul className="navbarBottomnavBarLinks">
+        <div className="navbarBottomnavBarLinks">
           <Link to="/productScreenChange" className="navbarBottomLink">
             Clothings & Accessories
           </Link>
@@ -69,7 +76,7 @@ const Navbar = () => {
           <Link to="/productScreenHealth" className="navbarBottomLink">
             Other Categories
           </Link>
-        </ul>
+        </div>
       </div>
     </NavbarStyled>
   );

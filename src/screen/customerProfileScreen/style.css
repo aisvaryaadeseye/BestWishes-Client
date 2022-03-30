@@ -152,6 +152,7 @@
   border-radius: 0.3em;
   cursor: pointer;
   height: 2em;
+  color: var(--whiteColor);
 }
 .editCusInputField {
   height: 2.3em;
@@ -217,6 +218,38 @@
   flex-wrap: wrap;
 }
 
+/* ==============customerPayment================= */
+.customerPayment {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+}
+.customerPaymentTop > h1 {
+  color: var(--orangeColor);
+  font-size: 1.2em;
+}
+
+/* ===============Become A seller============= */
+.becomeSellerContainer {
+  padding: 1em;
+}
+.becomeSellerContainer > h1 {
+  font-size: 1.2em;
+  color: var(--orangeColor);
+}
+.becomeSellerFormContainer {
+  display: flex;
+  flex-direction: column;
+  padding-top: 3em;
+}
+.becomeSellerBtn {
+  background-color: var(--orangeColor);
+  width: 26em;
+  border-radius: 0.3em;
+  cursor: pointer;
+  height: 2em;
+  color: var(--whiteColor);
+}
 @media screen and (max-width: 1200px) {
   .customerProfileSideBar {
     width: 300px;

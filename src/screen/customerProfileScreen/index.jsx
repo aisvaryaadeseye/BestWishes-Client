@@ -12,10 +12,10 @@ import need from "../../assets/icons/need.svg";
 import setting from "../../assets/icons/setting.svg";
 import card from "../../assets/icons/card.svg";
 import savedItem from "../../assets/icons/savedItem.svg";
-import UserContext from "../../provider/userProvider";
+// import UserContext from "../../provider/userProvider";
 
 const CustomerProfileScreen = () => {
-  const { state, USER } = useContext(UserContext);
+  // const { state, USER } = useContext(UserContext);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -23,6 +23,7 @@ const CustomerProfileScreen = () => {
   const logOut = () => {
     localStorage.removeItem("authToken");
     localStorage.removeItem("user");
+    localStorage.removeItem("userID");
     window.location.reload();
   };
   return (
@@ -35,6 +36,29 @@ const CustomerProfileScreen = () => {
           <h1>Jonh Doe</h1>
         </div>
         {/* ============ */}
+        <Modal
+          show={show}
+          onHide={handleClose}
+          backdrop="static"
+          keyboard={false}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title></Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Are you sure you want to log out ?</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Cancel
+            </Button>
+            <Button
+              variant="primary"
+              style={{ backgroundColor: "#f69014", border: "none" }}
+              onClick={logOut}
+            >
+              Yes
+            </Button>
+          </Modal.Footer>
+        </Modal>
 
         <nav className="customerProfileSideBarBottom">
           <h1>Account Detail</h1>
@@ -64,13 +88,13 @@ const CustomerProfileScreen = () => {
             </div>
           </Link>
 
-          <Link to="editcustomerProfile">
+          <Link to="customerPayment/payWithCard">
             <div className="sidebarNav">
               <img src={card} alt="" className="iconImg" />
               Payment
             </div>
           </Link>
-          <Link to="editcustomerProfile">
+          <Link to="customerPayment">
             <div className="sidebarNav">
               <img src={need} alt="" className="iconImg" />
               Need Assisstance ?
@@ -82,12 +106,18 @@ const CustomerProfileScreen = () => {
               Account Settings
             </div>
           </Link>
-          <Link to="editcustomerProfile">
+          <Link to="becomeSeller">
             <div className="sidebarNav">
               <img src={becomeSeller} alt="" className="iconImg" />
               Become a seller
             </div>
           </Link>
+          {/* <Link to="becomeAseller">
+            <div className="sidebarNav">
+              <img src={becomeSeller} alt="" className="iconImg" />
+              Become a seller
+            </div>
+          </Link> */}
 
           <div className="sidebarNav" onClick={handleShow}>
             <img src={logout} alt="" className="iconImg" />
@@ -98,29 +128,6 @@ const CustomerProfileScreen = () => {
       <div className="customerProfileFeeds">
         <Outlet />
       </div>
-      <Modal
-        show={show}
-        onHide={handleClose}
-        backdrop="static"
-        keyboard={false}
-      >
-        <Modal.Header closeButton>
-          <Modal.Title></Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Are you sure you want to log out ?</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Cancel
-          </Button>
-          <Button
-            variant="primary"
-            style={{ backgroundColor: "#f69014", border: "none" }}
-            onClick={logOut}
-          >
-            Yes
-          </Button>
-        </Modal.Footer>
-      </Modal>
     </div>
   );
 };

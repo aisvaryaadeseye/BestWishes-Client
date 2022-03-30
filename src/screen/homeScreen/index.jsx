@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./style.css";
 import { Container } from "../../component/styles/Container.styled";
 import CustomerReview from "../../component/customerReview";
@@ -6,7 +6,6 @@ import {
   CustomerHead,
   CustomerReviewContainer,
   CustomerUnderline,
-  FooterContainer,
   SubscribeToNewLetter,
   SubscribeToNewLetterLeft,
   SubscribeToNewLetterRight,
@@ -17,9 +16,12 @@ import OurBlog from "../../component/ourBlog";
 import { whorereWeData } from "../../component/data/WhoAreWe";
 import ProductSlider from "../../component/productSilde";
 import HomeSlider from "../../component/homeSlider";
+import BecomeSeller from "../customerProfileScreen/becomeSeller";
 // import { useNavigate } from "react-router-dom";
 
 function HomeScreen() {
+  const [storePhone, setstorePhone] = useState();
+
   return (
     <Container>
       {/* ===========topContainer================= */}
@@ -107,8 +109,8 @@ function HomeScreen() {
         </div>
 
         <div className="whoAreWeBottom">
-          {whorereWeData.map((who) => {
-            return <WhoAreWe key={who.id} who={who} />;
+          {whorereWeData.map((who, i) => {
+            return <WhoAreWe key={i} who={who} />;
           })}
         </div>
       </WhoAreWeContainer>
@@ -206,6 +208,22 @@ function HomeScreen() {
       </SubscribeToNewLetter>
 
       {/* ============Subscriber newsletter==========XXX==== */}
+      <div className="regInput passForm ">
+        <span className="userEmail">Store Phone Number (Required)</span>
+        <div className="passwordContainer editCusInputField">
+          <input
+            type="text"
+            required
+            placeholder=""
+            name="storePhone"
+            value={storePhone}
+            onChange={(e) => setstorePhone(e.target.value)}
+            className="passwordInput regInputField"
+          />
+        </div>
+      </div>
+
+      <BecomeSeller />
     </Container>
   );
 }

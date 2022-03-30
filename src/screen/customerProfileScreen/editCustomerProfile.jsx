@@ -36,7 +36,7 @@ const EditCustomerProfile = () => {
       <div className="editCustomerFormContainer">
         <div className="editCustomerImgContainer">
           <i className="fa fa-camera faCamera" aria-hidden="true"></i>
-          <label for="editCustomerImg">
+          <label htmlFor="editCustomerImg">
             <img
               src={customerImg}
               alt=""
@@ -54,10 +54,10 @@ const EditCustomerProfile = () => {
             <span className="userEmail">Full name</span>
             <div className="passwordContainer editCusInputField">
               <input
-                placeholder="your name"
-                name="fullName"
-                value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
+                // placeholder="your name"
+                // name="fullName"
+                // value={fullName}
+                // onChange={(e) => setFullName(e.target.value)}
                 className="passwordInput regInputField"
               />
             </div>
@@ -67,9 +67,9 @@ const EditCustomerProfile = () => {
             <div className="passwordContainer editCusInputField">
               <input
                 placeholder="sample@gmail.com"
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                // name="email"
+                // value={email}
+                // onChange={(e) => setEmail(e.target.value)}
                 className="passwordInput regInputField"
               />
             </div>
@@ -110,7 +110,7 @@ const EditCustomerProfile = () => {
             <div>
               <select
                 className="selectContainer"
-                onChnage={(val) => setGenderState(val.target.value)}
+                // onChange={(val) => setGenderState(val.target.value)}
               >
                 <option value="male">Male</option>
                 <option value="female">Female</option>
@@ -134,10 +134,10 @@ const EditCustomerProfile = () => {
             <span className="userEmail">State</span>
             <div className="passwordContainer editCusInputField">
               <input
-                placeholder="Helski"
-                name="fullName"
-                value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
+                // placeholder="Helski"
+                // name="fullName"
+                // value={fullName}
+                // onChange={(e) => setFullName(e.target.value)}
                 className="passwordInput regInputField"
               />
             </div>

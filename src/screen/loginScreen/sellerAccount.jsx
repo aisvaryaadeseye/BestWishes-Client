@@ -10,12 +10,6 @@ const SellerLoginAccount = () => {
   const [error, setError] = useState();
   const [success, setSuccess] = useState();
 
-  useEffect(() => {
-    if (localStorage.getItem("authToken")) {
-      navigate("/");
-    }
-  }, []);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const config = {

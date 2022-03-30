@@ -17,12 +17,14 @@ import profile from "../../assets/icons/profile.svg";
 
 const TopRightNav = ({ user }) => {
   const [show, setShow] = useState(false);
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const logOut = () => {
     localStorage.removeItem("authToken");
     localStorage.removeItem("user");
+    localStorage.removeItem("userID");
     window.location.reload();
   };
   return (
