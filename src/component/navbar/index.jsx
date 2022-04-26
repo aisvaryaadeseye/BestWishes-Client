@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { NavbarStyled } from "./style";
 import "./style.css";
 import "font-awesome/css/font-awesome.min.css";
@@ -17,7 +17,7 @@ const Navbar = () => {
       style={{ height: state.isSeller && "80px" }}
     >
       <div className="navbarTop">
-        <Link to="/">
+        <Link to={state.isSeller ? "/sellerprofilescreen/overview" : "/"}>
           <img src={bestWishLogo} className="bestWishLogo" />
         </Link>
         <div className="sarchbarContainer">
@@ -42,23 +42,23 @@ const Navbar = () => {
       ) : (
         <div className="navbarBottom">
           <div className="navbarBottomnavBarLinks">
-            <Link to="/productScreenClothing" className="navbarBottomLink">
+            <Link to="/product-screen-clothing" className="navbarBottomLink">
               Clothings & Accessories
             </Link>
 
-            <Link to="/productScreenHealth" className="navbarBottomLink">
+            <Link to="/product-screen-health" className="navbarBottomLink">
               Health & Beauty
             </Link>
 
-            <Link to="/productScreenHealth" className="navbarBottomLink">
+            <Link to="/product-screen-art" className="navbarBottomLink">
               Art & Craft
             </Link>
 
-            <Link to="/productScreenHealth" className="navbarBottomLink">
+            <Link to="/product-screen-pottery" className="navbarBottomLink">
               Pottery
             </Link>
 
-            <Link to="/productScreenHealth" className="navbarBottomLink">
+            <Link to="/product-screen-others" className="navbarBottomLink">
               Other Categories
             </Link>
           </div>

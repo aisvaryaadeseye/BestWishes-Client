@@ -29,14 +29,15 @@ const LoginScreen = () => {
     };
   }, []);
 
-  const handleShowCustomer = () => {
-    setShowSeller(true);
-    setShowCustomer(false);
-  };
-  const handleShowSller = () => {
-    setShowCustomer(true);
-    setShowSeller(false);
-  };
+  // const handleShowCustomer = () => {
+  //   setShowSeller(true);
+  //   setShowCustomer(false);
+  // };
+  
+  // const handleShowSller = () => {
+  //   setShowCustomer(true);
+  //   setShowSeller(false);
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();

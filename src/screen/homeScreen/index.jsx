@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./style.css";
 import { Container } from "../../component/styles/Container.styled";
 import CustomerReview from "../../component/customerReview";
@@ -16,12 +16,14 @@ import OurBlog from "../../component/ourBlog";
 import { whoAreData } from "../../component/data/WhoAreWe";
 import ProductSlider from "../../component/productSilde";
 import HomeSlider from "../../component/homeSlider";
-import BecomeSeller from "../customerProfileScreen/becomeSeller";
-// import { useNavigate } from "react-router-dom";
+import CartContext from "../../provider/cartProvider";
 
 function HomeScreen() {
-  // const [storePhone, setstorePhone] = useState();
+  // const { cartState, CART } = useContext(CartContext);
 
+  // useEffect(() => {
+  //   console.log({ HomeCART: cartState.cart });
+  // });
   return (
     <Container>
       {/* ===========topContainer================= */}
@@ -202,8 +204,8 @@ function HomeScreen() {
               <p>upload your product and start selling</p>
             </div>
 
-            <div className="becomeSellerContainer">
-              <span>Become a Seller Today</span>
+            <div className="becomeSellerBtN">
+              <button>Become a Seller Today</button>
             </div>
           </div>
         </SubscribeToNewLetterRight>

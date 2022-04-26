@@ -56,6 +56,12 @@ export const UserProvider = (props) => {
     dispatch({ type: "save-seller", payload: val });
   }
 
+  async function recoverSaveSeller() {
+    if (localStorage.getItem("saveSeller")) {
+      const saveSeller = await localStorage.getItem("saveSeller");
+      dispatch({ type: "save-seller", payload: saveSeller });
+    }
+  }
   async function recoverData() {
     if (localStorage.getItem("user")) {
       const user = await JSON.parse(localStorage.getItem("user"));
@@ -83,7 +89,8 @@ export const UserProvider = (props) => {
     recoverisSeller,
     saveSeller,
     updateSellerData,
-    recoverSellerData
+    recoverSellerData,
+    recoverSaveSeller
   };
 
   return (

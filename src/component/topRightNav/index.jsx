@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   Container,
   Navbar,
@@ -8,7 +8,7 @@ import {
   Modal,
 } from "react-bootstrap";
 import "./style.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logout from "../../assets/icons/logout.svg";
 import message from "../../assets/icons/message.png";
 import sell from "../../assets/icons/sell.svg";
@@ -17,13 +17,34 @@ import profile from "../../assets/icons/profile.svg";
 import customerImg from "../../assets/images/customerImg.jpg";
 import LogOut from "../logOut";
 import UserContext from "../../provider/userProvider";
-
+import CartContext from "../../provider/cartProvider";
 const TopRightNav = ({ user }) => {
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const { state } = useContext(UserContext);
+  const { state, USER } = useContext(UserContext);
+  const { cartState, CART } = useContext(CartContext);
+  const [saveSeller, setSaveSeller] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("saveSeller")) {
+      setSaveSeller(localStorage.getItem("saveSeller"));
+    }
+  }, []);
+
+  const handleBuyer = () => {
+    USER.updateisSeller(true);
+    if (!state.isSeller) {
+      navigate("/sellerprofilescreen/overview");
+    }
+  };
+  const handleSeller = () => {
+    USER.updateisSeller(false);
+    if (state.isSeller) {
+      navigate("/");
+    }
+  };
 
   return (
     <>
@@ -34,11 +55,8 @@ const TopRightNav = ({ user }) => {
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto topRightNav">
-                  {/* <Nav.Link className="topRightNavLink">
-                    <Link to="/productScreenClothing">Product</Link>
-                  </Nav.Link> */}
                   <Nav.Link className="topRightNavLink helpSellerAcc ">
-                    <Link to="/blog-screen">Blog</Link>
+                    <Link to="/blog-screen/lifestyle">Blog</Link>
                   </Nav.Link>
                   <NavDropdown
                     title="Help"
@@ -115,21 +133,16 @@ const TopRightNav = ({ user }) => {
                             Orders
                           </Link>
                         </NavDropdown.Item>
-                        {!state.isSeller && (
-                          <NavDropdown.Item className="topRightLink">
-                            <Link
-                              className="navLinks"
-                              to="/registerScreen/sellerRegisterAccount"
-                            >
-                              <img
-                                src={sell}
-                                alt=""
-                                className="navIcons sellIcon"
-                              />
-                              Sell on Best Wishes
-                            </Link>
-                          </NavDropdown.Item>
-                        )}
+                        <NavDropdown.Item className="topRightLink">
+                          <div className="navLinks" onClick={handleSeller}>
+                            <img
+                              src={sell}
+                              alt=""
+                              className="navIcons sellIcon"
+                            />
+                            Switch to Buyer
+                          </div>
+                        </NavDropdown.Item>
                         <NavDropdown.Item
                           className="topRightLink"
                           onClick={handleShow}
@@ -168,13 +181,6 @@ const TopRightNav = ({ user }) => {
                       </NavDropdown>
                     </div>
                   )}
-
-                  {/* <Nav.Link className="topRightNavLink">
-                    <p>
-                      Cart&nbsp;
-                      <i className="fa fa-cartfa fa-shopping-cart"></i>
-                    </p>
-                  </Nav.Link> */}
                 </Nav>
               </Navbar.Collapse>
             </Container>
@@ -212,10 +218,10 @@ const TopRightNav = ({ user }) => {
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto topRightNav">
                   <Nav.Link className="topRightNavLink">
-                    <Link to="/productScreenClothing">Product</Link>
+                    <Link to="/product-screen-clothing">Product</Link>
                   </Nav.Link>
                   <Nav.Link className="topRightNavLink ">
-                    <Link to="/blog-screen">Blog</Link>
+                    <Link to="/blog-screen/lifestyle">Blog</Link>
                   </Nav.Link>
                   <NavDropdown
                     title="Help"
@@ -288,7 +294,19 @@ const TopRightNav = ({ user }) => {
                             Orders
                           </Link>
                         </NavDropdown.Item>
-                        {!state.isSeller && (
+
+                        {saveSeller ? (
+                          <NavDropdown.Item className="topRightLink">
+                            <div className="navLinks" onClick={handleBuyer}>
+                              <img
+                                src={sell}
+                                alt=""
+                                className="navIcons sellIcon"
+                              />
+                              Switch to Seller
+                            </div>
+                          </NavDropdown.Item>
+                        ) : (
                           <NavDropdown.Item className="topRightLink">
                             <Link
                               className="navLinks"
@@ -343,10 +361,15 @@ const TopRightNav = ({ user }) => {
                   )}
 
                   <Nav.Link className="topRightNavLink">
-                    <p>
+                    <Link to="/cart-screen">
                       Cart&nbsp;
                       <i className="fa fa-cartfa fa-shopping-cart"></i>
-                    </p>
+                      {cartState.cart && (
+                        <div className="cartCounter">
+                          <span>{cartState.cart.length}</span>
+                        </div>
+                      )}
+                    </Link>
                   </Nav.Link>
                 </Nav>
               </Navbar.Collapse>
