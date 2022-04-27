@@ -34,7 +34,7 @@ const SideDrawer = ({ show, click }) => {
 
   return (
     <>
-      {state.isSeller ? (
+      {!state.switchUser ? (
         <div className={sideDrawerClass.join(" ")}>
           <div className="navIconImg">
             <Link to="/sellerprofilescreen/overview">

@@ -34,21 +34,20 @@ const TopRightNav = ({ user }) => {
   }, []);
 
   const handleBuyer = () => {
-    USER.updateisSeller(true);
-    if (!state.isSeller) {
-      navigate("/sellerprofilescreen/overview");
-    }
+    USER.updateSwitchUser(false);
+    navigate("/sellerprofilescreen/overview");
+    // if (!state.switchUser) {
+    //   navigate("/sellerprofilescreen/overview");
+    // }
   };
   const handleSeller = () => {
-    USER.updateisSeller(false);
-    if (state.isSeller) {
-      navigate("/");
-    }
+    USER.updateSwitchUser(true);
+    navigate("/");
   };
 
   return (
     <>
-      {state.isSeller ? (
+      {!state.switchUser ? (
         <div>
           <Navbar bg="light" expand="lg" id="topRightNavContainer">
             <Container>
@@ -295,7 +294,7 @@ const TopRightNav = ({ user }) => {
                           </Link>
                         </NavDropdown.Item>
 
-                        {saveSeller ? (
+                        {state.isSeller ? (
                           <NavDropdown.Item className="topRightLink">
                             <div className="navLinks" onClick={handleBuyer}>
                               <img
@@ -364,7 +363,7 @@ const TopRightNav = ({ user }) => {
                     <Link to="/cart-screen">
                       Cart&nbsp;
                       <i className="fa fa-cartfa fa-shopping-cart"></i>
-                      {cartState.cart && (
+                      {user && (
                         <div className="cartCounter">
                           <span>{cartState.cart.length}</span>
                         </div>

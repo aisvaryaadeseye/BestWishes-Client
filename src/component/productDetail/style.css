@@ -14,6 +14,10 @@
   height: 150px;
   position: relative;
 }
+.product-img-con {
+  width: 100%;
+  height: 100%;
+}
 .todayImage {
   width: 100%;
   object-fit: cover;
@@ -24,6 +28,7 @@
 .likeBtnContainer {
   position: relative;
   width: 4rem;
+  /* z-index: 999999; */
 }
 .likeBtn {
   position: absolute;

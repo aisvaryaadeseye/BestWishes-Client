@@ -10,7 +10,7 @@ const MobileNav = ({ click }) => {
   return (
     <div className="mobileNav">
       <div className="mobileNavTop">
-        <Link to={state.isSeller ? "/sellerprofilescreen/overview" : "/"}>
+        <Link to={state.switchUser ? "/" : "/sellerprofilescreen/overview"}>
           <img src={bestWishLogo} className="bestWishLogo" />
         </Link>
         <div className="hamburgerContainer" onClick={click}>

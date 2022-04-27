@@ -11,7 +11,7 @@ const ProductScreenHealth = () => {
   const { state, CART } = useContext(CartContext);
 
   useEffect(() => {
-    console.log({ mycart: state.cart });
+    // console.log({ mycart: state.cart });
   });
   return (
     // <productScreen>

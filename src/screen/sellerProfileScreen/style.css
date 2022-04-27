@@ -567,6 +567,7 @@
 }
 .sellerProductsBottomDown {
   margin-top: 2em;
+  /* background-color: red; */
 }
 .productCardCate {
   display: flex;

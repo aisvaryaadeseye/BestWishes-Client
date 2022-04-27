@@ -14,13 +14,20 @@ const ProductDetail = ({ showDiscount, product, sellerTag }) => {
     setLikeBtn(!likeBtn);
   };
 
+  // <Link to={{ pathname: `/product/${product._id}`}}>
+
   return (
-    <Link to="/product-detail-screen" className="ProductDetail">
+    <div className="ProductDetail">
       <div className="ProductDetailTop">
         <div className="likeBtnContainer" onClick={handleLike}>
           <img src={likeBtn ? LikedBtnDone : Likedbutton} className="likeBtn" />
         </div>
-        <img src={product && product.imgData} className="todayImage" />
+        <Link
+          to={{ pathname: `/product-detail-screen/${product.id}` }}
+          className="product-img-con"
+        >
+          <img src={product && product.imgData} className="todayImage" />
+        </Link>
 
         {showDiscount && (
           <div className="percentageContainer">
@@ -73,7 +80,7 @@ const ProductDetail = ({ showDiscount, product, sellerTag }) => {
           </div>
         )}
       </div>
-    </Link>
+    </div>
   );
 };
 

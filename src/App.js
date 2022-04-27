@@ -82,15 +82,17 @@ import SellerHealthBeautyNav from "./component/sellerProductCollectionNav/seller
 import SellerOtherCategoriesNav from "./component/sellerProductCollectionNav/sellerOtherCategoriesNav";
 import SellerPotteryNav from "./component/sellerProductCollectionNav/sellerPotteryNav";
 import ProductDetailScreen from "./screen/productDetailScreen";
+import AddProductScreen from "./screen/addProductScreen";
 function App() {
   const { state, USER } = useContext(UserContext);
   const [sideToggle, setSideToggle] = useState(false);
 
-  useEffect(() => {
-    USER.recoverData();
-    USER.recoverisSeller();
-    USER.recoverSellerData();
-    USER.recoverSaveSeller();
+  useEffect(async () => {
+    await USER.recoverSwitchUser();
+    await USER.recoverData();
+    await USER.recoverisSeller();
+    await USER.recoverSellerData();
+    await USER.recoverSaveSeller();
   }, []);
 
   return (
@@ -103,9 +105,10 @@ function App() {
         <Routes>
           <Route path="/" element={<HomeScreen />} />
           <Route
-            path="/product-detail-screen"
+            path="/product-detail-screen/:id"
             element={<ProductDetailScreen />}
           />
+          <Route path="/add-product-screen" element={<AddProductScreen />} />
 
           <Route
             path="/product-screen-clothing"

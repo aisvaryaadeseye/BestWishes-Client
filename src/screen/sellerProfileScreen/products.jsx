@@ -81,10 +81,10 @@ const SellerProducts = () => {
         </div>
       </div>
 
-      <span>
+      <Link to="/add-product-screen">
         <i className="fa fa-plus faAddProduct" aria-hidden="true"></i> Add
         Product to collection
-      </span>
+      </Link>
       <hr className="productDivider" />
       <div className="sellerProductsBottom">
         <div className="sellerProductsBottomTop">

@@ -17,13 +17,21 @@ import { whoAreData } from "../../component/data/WhoAreWe";
 import ProductSlider from "../../component/productSilde";
 import HomeSlider from "../../component/homeSlider";
 import CartContext from "../../provider/cartProvider";
-
+import { useNavigate } from "react-router-dom";
+import UserContext from "../../provider/userProvider";
 function HomeScreen() {
+  const { state, USER } = useContext(UserContext);
+  const navigate = useNavigate();
+
   // const { cartState, CART } = useContext(CartContext);
 
-  // useEffect(() => {
-  //   console.log({ HomeCART: cartState.cart });
-  // });
+  useEffect(async () => {
+    // console.log({ swichUswer: state.switchUser });
+    if (!state.switchUser) {
+      // console.log({ false: false });
+      navigate("/sellerprofilescreen/overview");
+    }
+  }, [state]);
   return (
     <Container>
       {/* ===========topContainer================= */}

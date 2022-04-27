@@ -41,10 +41,11 @@ const CustomerProfileScreen = () => {
   }
 
   const handleBuyer = () => {
-    USER.updateisSeller(true);
-    if (!state.isSeller) {
-      navigate("/sellerprofilescreen/overview");
-    }
+    USER.updateSwitchUser(false);
+    navigate("/sellerprofilescreen/overview");
+    // if (!state.switchUser) {
+    //   navigate("/sellerprofilescreen/overview");
+    // }
   };
 
   const handleSideBar = () => {

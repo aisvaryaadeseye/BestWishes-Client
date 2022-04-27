@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.90eda120.css",
-    "main.js": "/static/js/main.df6e2e03.js",
+    "main.css": "/static/css/main.fbe2b7f8.css",
+    "main.js": "/static/js/main.fa1f1bb4.js",
     "static/js/787.375bfa4a.chunk.js": "/static/js/787.375bfa4a.chunk.js",
     "static/media/blogImg1.jpg": "/static/media/blogImg1.9180253d51bd91808348.jpg",
     "static/media/homeImg4.jpg": "/static/media/homeImg4.806866fe94cfba0ff626.jpg",
@@ -25,6 +25,7 @@
     "static/media/skypurpleGraph.jpg": "/static/media/skypurpleGraph.8e8c53c7b52a58243bcd.jpg",
     "static/media/purpleGraph.jpg": "/static/media/purpleGraph.4a392ccac49d34fd9602.jpg",
     "static/media/productimg3.jpg": "/static/media/productimg3.7bdefe66a9e8a617fb68.jpg",
+    "static/media/moreSellerProduct.jpg": "/static/media/moreSellerProduct.e123706ceffc282c54a6.jpg",
     "static/media/productB.jpg": "/static/media/productB.c419d3fbf8e13718be51.jpg",
     "static/media/fontawesome-webfont.woff?v=4.7.0": "/static/media/fontawesome-webfont.f691f37e57f04c152e23.woff",
     "static/media/productF.jpg": "/static/media/productF.401dc71130fc3a8cb006.jpg",
@@ -54,6 +55,7 @@
     "static/media/masterCardIcon.svg": "/static/media/masterCardIcon.9edd77a1f918c356484489053f423402.svg",
     "static/media/expressCard.svg": "/static/media/expressCard.a690ace31753a8a2b306d270f25eb152.svg",
     "static/media/income.svg": "/static/media/income.b2b4abc21220236534e4eb33f098c687.svg",
+    "static/media/Camera.svg": "/static/media/Camera.cef3c28ecc0649623e285e2d31d0ac79.svg",
     "static/media/pen.svg": "/static/media/pen.4b6a3fdf5df4dde8be6bd6883315fb50.svg",
     "static/media/LikedButton.svg": "/static/media/LikedButton.f861f033a6114b75ca780a93013257db.svg",
     "static/media/visaCardIcon.svg": "/static/media/visaCardIcon.9d98657a5107dd1626de379d6771fd50.svg",
@@ -80,12 +82,12 @@
     "static/media/logout.svg": "/static/media/logout.81dabe4622365f98c81e91a1b764b51f.svg",
     "static/media/ccvIcon.svg": "/static/media/ccvIcon.dcfdf37b910b6062bc8aa4e119b46be4.svg",
     "static/media/need.svg": "/static/media/need.7b754e8b078e2d1168ba2003aa94b22c.svg",
-    "main.90eda120.css.map": "/static/css/main.90eda120.css.map",
-    "main.df6e2e03.js.map": "/static/js/main.df6e2e03.js.map",
+    "main.fbe2b7f8.css.map": "/static/css/main.fbe2b7f8.css.map",
+    "main.fa1f1bb4.js.map": "/static/js/main.fa1f1bb4.js.map",
     "787.375bfa4a.chunk.js.map": "/static/js/787.375bfa4a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.90eda120.css",
-    "static/js/main.df6e2e03.js"
+    "static/css/main.fbe2b7f8.css",
+    "static/js/main.fa1f1bb4.js"
   ]
 }

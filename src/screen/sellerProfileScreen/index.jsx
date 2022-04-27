@@ -58,10 +58,11 @@ const SellerProfileScreen = () => {
   };
 
   const handleSeller = () => {
-    USER.updateisSeller(false);
-    if (state.isSeller) {
-      navigate("/");
-    }
+    USER.updateSwitchUser(true);
+    navigate("/");
+    // if (state.isSeller) {
+    //   navigate("/");
+    // }
   };
 
   return (
