@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import "./style.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Likedbutton from "../../assets/images/Likedbutton.svg";
 import LikedBtnDone from "../../assets/icons/LikedButton.svg";
 
 import todayproduct from "../../assets/images/todayproduct4.jpg";
 
-const SellerProductDetail = ({ showDiscount }) => {
+const SellerProductDetail = ({ showDiscount, product }) => {
+  //
   const [likeBtn, setLikeBtn] = useState(false);
   const navigate = useNavigate();
   const handleLike = () => {
@@ -18,7 +19,10 @@ const SellerProductDetail = ({ showDiscount }) => {
         <div className="likeBtnContainer" onClick={handleLike}>
           <img src={likeBtn ? LikedBtnDone : Likedbutton} className="likeBtn" />
         </div>
-        <img src={todayproduct} className="todayImage" />
+        <img
+          src={product && product?.proFrontIMAGE[0]?.URL}
+          className="todayImage"
+        />
 
         {showDiscount && (
           <div className="percentageContainer">
@@ -27,7 +31,7 @@ const SellerProductDetail = ({ showDiscount }) => {
         )}
       </div>
       <div className="sellerProductDetailBottom">
-        <p className="productName">Saura bucket</p>
+        <p className="productName">{product?.productName}</p>
         <div className="starContainer">
           <i className="fa fa-star starIcon" aria-hidden="true"></i>
           <i className="fa fa-star starIcon" aria-hidden="true"></i>
@@ -35,22 +39,24 @@ const SellerProductDetail = ({ showDiscount }) => {
           <i className="fa fa-star starIcon" aria-hidden="true"></i>
           <i className="fa fa-star starIcon" aria-hidden="true"></i>
         </div>
-        <p className="shopName">Sold by Chester Store</p>
+        {/* <p className="shopName">Sold by Chester Store</p> */}
         <div className="priceContainer">
-          <p>€49.99</p>
+          <p>€{product?.productPrice}</p>
           <div className="priceRight">
             <del> €70.99</del>
           </div>
         </div>
-        <div className="priceBtnContainer">
-          <button onClick={() => navigate("/seller-product-details-screen")}>
-            View product
-          </button>
-        </div>
+        {/* <div className="priceBtnCon"> */}
+        <Link
+          className="priceBtnCon"
+          to={{ pathname: `/seller-product-details-screen/${product?._id}` }}
+        >
+          <span className="price-btn-span">View product</span>
+        </Link>
+        {/* </div> */}
       </div>
     </div>
   );
 };
 
 export default SellerProductDetail;
-

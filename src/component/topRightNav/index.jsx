@@ -15,7 +15,7 @@ import sell from "../../assets/icons/sell.svg";
 import orders from "../../assets/icons/order.png";
 import profile from "../../assets/icons/profile.svg";
 import customerImg from "../../assets/images/customerImg.jpg";
-import LogOut from "../logOut";
+// import LogOut from "../logOut";
 import UserContext from "../../provider/userProvider";
 import CartContext from "../../provider/cartProvider";
 const TopRightNav = ({ user }) => {
@@ -27,6 +27,18 @@ const TopRightNav = ({ user }) => {
   const [saveSeller, setSaveSeller] = useState(false);
   const navigate = useNavigate();
 
+  const LogOut = () => {
+    setShow(false);
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("user");
+    localStorage.removeItem("userID");
+    localStorage.removeItem("isSeller");
+    // localStorage.removeItem("sellerData");
+    localStorage.removeItem("saveSeller");
+    navigate("/");
+
+    window.location.reload();
+  };
   useEffect(() => {
     if (localStorage.getItem("saveSeller")) {
       setSaveSeller(localStorage.getItem("saveSeller"));
@@ -54,9 +66,9 @@ const TopRightNav = ({ user }) => {
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto topRightNav">
-                  <Nav.Link className="topRightNavLink helpSellerAcc ">
+                  <div className="topRightNavLink helpSellerAcc ">
                     <Link to="/blog-screen/lifestyle">Blog</Link>
-                  </Nav.Link>
+                  </div>
                   <NavDropdown
                     title="Help"
                     id="topRightDropdown"
@@ -216,12 +228,12 @@ const TopRightNav = ({ user }) => {
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto topRightNav">
-                  <Nav.Link className="topRightNavLink">
+                  <div className="topRightNavLink">
                     <Link to="/product-screen-clothing">Product</Link>
-                  </Nav.Link>
-                  <Nav.Link className="topRightNavLink ">
+                  </div>
+                  <div className="topRightNavLink ">
                     <Link to="/blog-screen/lifestyle">Blog</Link>
-                  </Nav.Link>
+                  </div>
                   <NavDropdown
                     title="Help"
                     id="topRightDropdown"
@@ -359,7 +371,7 @@ const TopRightNav = ({ user }) => {
                     </div>
                   )}
 
-                  <Nav.Link className="topRightNavLink">
+                  <div className="topRightNavLink">
                     <Link to="/cart-screen">
                       Cart&nbsp;
                       <i className="fa fa-cartfa fa-shopping-cart"></i>
@@ -369,7 +381,7 @@ const TopRightNav = ({ user }) => {
                         </div>
                       )}
                     </Link>
-                  </Nav.Link>
+                  </div>
                 </Nav>
               </Navbar.Collapse>
             </Container>

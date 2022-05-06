@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 import EditSellerProfileSlider from "../../component/editSellerProfileSlider";
 import storeImg from "../../assets/images/storeImg.jpg";
@@ -7,13 +7,14 @@ import LikedBtnDone from "../../assets/icons/LikedButton.svg";
 import message from "../../assets/icons/message.svg";
 import { Slider } from "@reach/slider";
 import "@reach/slider/styles.css";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useParams, useOutletContext } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import sendIcon from "../../assets/icons/sendIcon.svg";
 import UserChatBox from "../../component/chatBox/userChatBox";
 import FriendChatBox from "../../component/chatBox/friendChatBox";
-
+import axios from "axios";
+import { useIsMounted } from "../../component/isMounted";
 var navLinks = [
   { link: "all-collections", text: "All Collections" },
   { link: "clothings-accessories", text: "Clothings & Accessories" },
@@ -28,10 +29,30 @@ const SellerProductCollection = () => {
   const [adult, setAdult] = useState();
   const [children, setChildren] = useState();
   const [likeBtn, setLikeBtn] = useState(false);
-
+  let { id } = useParams();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [sellerDetail, setSellerDetail] = useState({});
+  const isMounted = useIsMounted();
+  async function getSellertDetail() {
+    try {
+      const { data } = await axios.get(`/api/auth/get-seller?userID=${id}`);
+      if (data) {
+        if (isMounted.current) {
+          setSellerDetail(data);
+        }
+      }
+
+      // console.log({ sellerDetail: sellerDetail });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    getSellertDetail();
+  }, [sellerDetail]);
 
   const style = {
     position: "absolute",
@@ -77,30 +98,20 @@ const SellerProductCollection = () => {
     <div className="sellerProductCollection">
       <div className="sellerProductCollection-top">
         <div className="sellerProductCollection-top-A">
-          <EditSellerProfileSlider />
+          <EditSellerProfileSlider storeName={sellerDetail?.storeName} />
         </div>
         <div className="sellerProductCollection-top-B">
           <div className="sellerProductCollecTop-B">
             <div className="sellerProductCollection-top-left">
               <img src={storeImg} alt="" className="store-image" />
               <div className="store-top-text">
-                <h6>Chesterfield Store</h6>
-                <h5>Helsinki, Finland</h5>
+                <h6>{sellerDetail?.storeName}</h6>
+                <h5>
+                  {sellerDetail?.country + ","} {sellerDetail?.storeAddress}
+                </h5>
                 <div className="store-top-text-rating">
                   <h6>4.5 ratings</h6>
                   <span className="cart-item-star">&#9733;</span>
-                  {/* <div className="seller-product-review-text">
-                    <i
-                      className="fa fa-circle faCircleIcon"
-                      aria-hidden="true"
-                    ></i>
-                    <h5>Reviews</h5>
-                    <i
-                      className="fa fa-circle faCircleIcon"
-                      aria-hidden="true"
-                    ></i>
-                    <h5>More info</h5>
-                  </div> */}
                 </div>
               </div>
             </div>

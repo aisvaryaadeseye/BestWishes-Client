@@ -43,8 +43,6 @@ const BecomeSeller = () => {
     setCountry(country);
   };
 
-  
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -149,7 +147,7 @@ const BecomeSeller = () => {
             <div className="passwordContainer editCusInputField">
               <input
                 placeholder="your name"
-                value={sellerName}
+                value={sellerName ?? ""}
                 required
                 onChange={(e) => setSellerName(e.target.value)}
                 className="passwordInput regInputField"
@@ -163,7 +161,7 @@ const BecomeSeller = () => {
                 placeholder=""
                 required
                 name="storeName"
-                value={storeName}
+                value={storeName ?? ""}
                 onChange={(e) => setStoreName(e.target.value)}
                 className="passwordInput regInputField"
               />
@@ -178,7 +176,7 @@ const BecomeSeller = () => {
                 required
                 placeholder=""
                 name="storeAddress"
-                value={storeAddress}
+                value={storeAddress ?? ""}
                 onChange={(e) => setStoreAddress(e.target.value)}
                 className="passwordInput regInputField"
               />
@@ -192,7 +190,7 @@ const BecomeSeller = () => {
                 required
                 placeholder=""
                 name="storePhone"
-                value={storePhone}
+                value={storePhone ?? ""}
                 onChange={(e) => setstorePhone(e.target.value)}
                 className="passwordInput regInputField"
               />
@@ -206,7 +204,7 @@ const BecomeSeller = () => {
               <Select
                 className="countrySelect"
                 options={options}
-                value={country}
+                value={country ?? ""}
                 onChange={countryHandler}
               />
             </div>
@@ -217,7 +215,7 @@ const BecomeSeller = () => {
               <input
                 type="date"
                 name="dob"
-                value={dob}
+                value={dob ?? ""}
                 onChange={(e) => setDob(e.target.value)}
                 className="passwordInput regInputField"
               />
@@ -232,7 +230,7 @@ const BecomeSeller = () => {
               <input
                 placeholder=""
                 name="city"
-                value={city}
+                value={city ?? ""}
                 onChange={(e) => setCity(e.target.value)}
                 className="passwordInput regInputField"
               />
